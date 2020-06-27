@@ -1,0 +1,159 @@
+<section id="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="navbar navbar-expand-md fixed-top">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-bar">
+                        <span class="navbar-toggler-icon" style="color:purple">&#9776;</span>
+                    </button>
+
+                    <a href="#" class="navbar-brand">
+                        <i class="fas fa-home" style="font-size:len; color:purple"></i>
+                    </a>
+
+                    <div class="collapse navbar-collapse" id="navigation-bar"></div>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="#statistic" class="nav-link">STATISTIC</a></li>
+                        <li class="nav-item"><a href="#footer" class="nav-link">CONTACT</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section> 
+
+
+
+<section id="header">
+    <div class="container">
+        <div class="col">
+            <h1 class="h1-title">[COVID - 19]</h1>
+            <p class="text-center">
+                Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
+                    Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="statistic">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col text-left">
+                <h2>STATISTICS</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-center mb-3">
+                <form>
+                    <div class="form-group">
+                        <select (change)="countryChanged($event.target.value)" class="form-control" id="country">
+                            <option selected value="global">Global</option>
+                            <option *ngFor="let country of countries" value="{{country}}">{{country}}</option>
+                        </select>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 md-3">
+                <div class="card card-infected">
+                    <div class="card-body">
+                        <h3 class="card-title">INFECTED</h3>
+                        <p class="card-text">{{data.confirmed | number}}</p>
+                        <p>{{data.lastupdates | date:'longDate'}}</p>
+                        <p>No. of active cases of COVID-19</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-4 md-3">
+                <div class="card card-recovered">
+                    <div class="card-body">
+                        <h3 class="card-title">RECOVERED</h3>
+                        <p class="card-text">{{data.recovered | number}}</p>
+                        <p>{{data.lastupdates| date:'longDate'}}</p>
+                        <p>No. of Recovered cases of COVID-19</p>
+                    </div>
+                </div>
+            </div>
+        
+
+       
+            <div class="col-md-4 md-3">
+                <div class="card card-deaths">
+                    <div class="card-body">
+                        <h3 class="card-title">DEATHS</h3>
+                        <p class="card-text">{{data.deaths | number}}</p>
+                        <p>{{data.lastupdates| date:'longDate'}}</p>
+                        <p>No. of Death cases of COVID-19</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="graph">
+    <div class="container">
+        <div class="row">
+            <div class="col chart-wrapper">
+                <canvas *ngIf="global" baseChart
+                    [chartType]="lineChartType"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                >
+                </canvas>
+
+                <canvas *ngIf="!global" baseChart
+                    [chartType]="barChartType"
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                >
+                </canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md8 col-sm-6">
+                <h3>About me</h3>
+                <p>I am Nilanjan, an amateur software developer trainee</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 col-sm-6" >
+                <h3>Keep in Touch</h3>
+                <ul class="list-unstyled">
+                    <li><p><strong><i class="fas fa-map-marker-alt"></i>Address: </strong>House No.5, North Lakhimpur,Assam ,787001</p></li>
+                    <li><p><strong><i class="fas fa-envelope"></i>Email: </strong><a href="#">nilanjandutta@pm.me</a></p></li>
+                    <li><p><strong><i class="fas fa-phone"></i>Phone: </strong>+91 97583 15640</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
